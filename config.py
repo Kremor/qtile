@@ -121,8 +121,9 @@ screens = [
                     background=Colors.blue_light,
                     foreground=Colors.background
                 ),
-                widget.Pacman(
+                my_widgets.Pacman(
                     background=Colors.yellow_light,
+                    foreground=Colors.red_dark,
                     update_interval=3600
                 ),
                 my_widgets.Spotify(
@@ -139,7 +140,10 @@ screens = [
                 widget.Notify(),
                 widget.Systray(),
                 widget.Net(),
-                widget.Clock(),
+                widget.Clock(
+                    background=Colors.purple_dark,
+                    foreground=Colors.foregroud
+                ),
             ],
             30,
             opacity=0.75
