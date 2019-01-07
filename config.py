@@ -121,21 +121,10 @@ screens = [
 ]
 
 
-@hook.subscribe.startup
-def startup():
-    import subprocess
-
-    subprocess.call(['feh', '--randomize', '--bg-fil', '~/Nextcloud/Wallpapers'])
-
-
 @hook.subscribe.startup_once
 def startup_once():
     import os
     import subprocess
 
-    # compton
-    subprocess.call(['compton', '--vsync', 'opengl'])
-    # redshift
-    subprocess.call(['redshift'])
-    # Turns Numlock on. Requires numlockx
-    subprocess.call(['numlockx', 'on'])
+    script = os.path.expanduser('~/.config/qtile/init.fish')
+    subprocess.call([script])
