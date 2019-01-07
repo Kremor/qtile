@@ -16,6 +16,7 @@ shift = 'shift'
 keys = [
     Key([mod, ctrl], 'r', lazy.restart()),
     Key([mod, ctrl], 'q', lazy.shutdown()),
+    Key([mod], 'q', lazy.window.kill()),
 
     Key([mod], ret, lazy.spawn('sakura')),
     Key([mod, shift], 'w', lazy.window.kill()),
