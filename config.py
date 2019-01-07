@@ -15,9 +15,20 @@ shift = 'shift'
 class Colors:
     background = '#1d1d1d'
     foregroud = '#ebebeb'
-    red_darlk = '#a54242'
+    red_dark = '#a54242'
     red_light = '#cc6666'
-    yellow_dark = '#de'
+    green_dark = '#89b05f'
+    green_light = '#a3bc8e'
+    yellow_dark = '#d87454'
+    yellow_light = '#eebb57'
+    blue_dark = '#5e81ac'
+    blue_light = '#88c0d0'
+    purple_dark = '#85678f'
+    purple_light = 'b48ead'
+    cyan_dark = '#5e8d87'
+    cyan_light = '#8abeb7'
+    white_dark = '#bdc3d0'
+    white_light = '#e6e9f0'
 
 
 # Key bindings
@@ -102,12 +113,23 @@ screens = [
             [
                 widget.GroupBox(visible_groups=['6', '7', '8', '9', '0']),
                 widget.WindowName(),
-                my_widgets.CapsLock(),
-                my_widgets.NumLock(),
-                widget.Pacman(update_interval=3600),
-                my_widgets.Spotify(),
+                my_widgets.CapsLock(
+                    background=Colors.red_dark,
+                    foreground=Colors.foregroud,
+                ),
+                my_widgets.NumLock(
+                    background=Colors.blue_light,
+                    foreground=Colors.background
+                ),
+                widget.Pacman(
+                    background=Colors.yellow_light,
+                    update_interval=3600
+                ),
+                my_widgets.Spotify(
+                    background=Colors.green_dark,
+                ),
                 widget.Pomodoro(
-                    background='#dd0000',
+                    background=Colors.yellow_dark,
                     color_active='#111111',
                     color_inactive='#111111',
                     foreground='#111111',
