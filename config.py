@@ -61,16 +61,16 @@ keys = [
 
 # Groups
 groups = [
-    Group('1'),
-    Group('2'),
-    Group('3'),
-    Group('4'),
-    Group('5'),
-    Group('6'),
-    Group('7'),
-    Group('8'),
-    Group('9'),
-    Group('0'),
+    Group('1', label='●'),
+    Group('2', label='●'),
+    Group('3', label='●'),
+    Group('4', label='●'),
+    Group('5', label='●'),
+    Group('6', label='●'),
+    Group('7', label='●'),
+    Group('8', label='●'),
+    Group('9', label='●'),
+    Group('0', label='●'),
 ]
 
 
@@ -99,14 +99,39 @@ layouts = [
 floating_layout = layout.Floating()
 
 
+group_box_config = {
+    'active': Colors.foregroud,
+    'background': Colors.black_dark,
+    'foreground': Colors.foregroud,
+    'highlight_method': 'block',
+    'inactive': Colors.black_light,
+    'other_current_screen_border': Colors.black_light,
+    'other_screen_border': Colors.black_light,
+    'rounded': False,
+    'this_current_screen_border': Colors.black_light,
+    'this_screen_border': Colors.black_light,
+    'urgent_alert_method': 'block',
+    'urgent_border': Colors.red_dark,
+    'urgent_text': Colors.background,
+}
+
+
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(visible_groups=['1', '2', '3', '4', '5']),
+                my_widgets.Pacman(
+                    background=Colors.yellow_light,
+                    foreground=Colors.red_dark,
+                    update_interval=3600
+                ),
                 widget.WindowName(),
+                widget.GroupBox(
+                    **group_box_config,
+                    visible_groups=['1', '2', '3', '4', '5'],
+                ),
             ],
-            25,
+            23,
             background=Colors.background,
             opacity=0.75
         )
@@ -114,7 +139,10 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(visible_groups=['6', '7', '8', '9', '0']),
+                widget.GroupBox(
+                    **group_box_config,
+                    visible_groups=['6', '7', '8', '9', '0']
+                ),
                 widget.WindowName(),
                 my_widgets.CapsLock(
                     background=Colors.red_dark,
@@ -123,11 +151,6 @@ screens = [
                 my_widgets.NumLock(
                     background=Colors.blue_light,
                     foreground=Colors.background
-                ),
-                my_widgets.Pacman(
-                    background=Colors.yellow_light,
-                    foreground=Colors.red_dark,
-                    update_interval=3600
                 ),
                 my_widgets.Spotify(
                     background=Colors.green_dark,
@@ -148,7 +171,7 @@ screens = [
                     foreground=Colors.foregroud
                 ),
             ],
-            25,
+            23,
             background=Colors.background,
             opacity=0.75
         ),
