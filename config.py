@@ -81,7 +81,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox(visible_groups=['1', '2', '3', '4', '5']),
                 widget.WindowName(),
             ],
             30,
@@ -91,7 +91,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.AGroupBox(),
+                widget.GroupBox(visible_groups=['6', '7', '8', '9', '0']),
                 widget.WindowName(),
                 my_widgets.CapsLock(),
                 my_widgets.Spotify(),
