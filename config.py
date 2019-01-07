@@ -15,6 +15,8 @@ shift = 'shift'
 class Colors:
     background = '#1d1d1d'
     foregroud = '#ebebeb'
+    black_dark = '#3b4252'
+    black_light = '#4c566a'
     red_dark = '#a54242'
     red_light = '#cc6666'
     green_dark = '#89b05f'
@@ -104,7 +106,8 @@ screens = [
                 widget.GroupBox(visible_groups=['1', '2', '3', '4', '5']),
                 widget.WindowName(),
             ],
-            30,
+            25,
+            background=Colors.background,
             opacity=0.75
         )
     ),
@@ -145,7 +148,8 @@ screens = [
                     foreground=Colors.foregroud
                 ),
             ],
-            30,
+            25,
+            background=Colors.background,
             opacity=0.75
         ),
         x=1366,
