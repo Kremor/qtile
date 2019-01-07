@@ -6,6 +6,7 @@ from libqtile.widget import base
 class Spotify(base.InLoopPollText):
 
     defaults = [
+        ('background', '#24CF5F', 'Background color'),
         ('update_interval', 1, 'Update interval')
     ]
 
@@ -36,8 +37,8 @@ class Spotify(base.InLoopPollText):
             self.interface = None
             self.player = None
 
-    def _get_meta(self):
-        if self.interface:
+    def _get_text(self):
+        try:
             metadata = self.interface.Get(
                 'org.mpris.MediaPlayer2.Player',
                 'Metadata'
@@ -46,20 +47,22 @@ class Spotify(base.InLoopPollText):
                 'org.mpris.MediaPlayer2.Player',
                 'PlaybackStatus'
             )
+
             artist = metadata['xesam:albumArtist'][0]
             title = metadata['xesam:title']
-            return title, artist, status
-        return None, None, None
 
-    def _get_text(self):
-        if self.interface and self.player:
-            title, artist, status = self._get_meta()
-            return '𝅘𝅥𝅮 {} - {}  [{}]'.format(
-                title,
-                artist,
-                '⏵' if status == 'Playing' else '⏸'
-            )
-        return '⏹'
+            if status == 'Playing':
+                return ' [ {} - {} ] '.format(
+                    title,
+                    artist
+                )
+            elif status == 'Paused':
+                return '[ ⏵ ]'
+            return '[ ⏹ ]'
+        except:
+            self.interface = None
+            self.player = None
+            return ''
 
     def _next_song(self):
         if self.player:
@@ -70,13 +73,17 @@ class Spotify(base.InLoopPollText):
             self.player.PlayPause()
 
     def _previous_song(self):
-        pass
+        if self.player:
+            self.player.Previous()
 
     def button_press(self, x, y, button):
         if self.interface and self.player:
             # Left mouse's button
             if button == 1:
                 self._play_pause()
+            # Middle mouse's button
+            elif button == 2:
+                self._previous_song()
             # Right mouse's button
             elif button == 3:
                 self._next_song()
@@ -85,6 +92,6 @@ class Spotify(base.InLoopPollText):
 
     def poll(self):
         text = self._get_text()
-        if text == '⏹':
+        if not text:
             self._init_dbus()
         return text
