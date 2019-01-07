@@ -12,6 +12,14 @@ ret = 'Return'
 shift = 'shift'
 
 
+class Colors:
+    background = '#1d1d1d'
+    foregroud = '#ebebeb'
+    red_darlk = '#a54242'
+    red_light = '#cc6666'
+    yellow_dark = '#de'
+
+
 # Key bindings
 keys = [
     Key([mod, ctrl], 'r', lazy.restart()),
@@ -95,6 +103,7 @@ screens = [
                 widget.GroupBox(visible_groups=['6', '7', '8', '9', '0']),
                 widget.WindowName(),
                 my_widgets.CapsLock(),
+                my_widgets.NumLock(),
                 widget.Pacman(update_interval=3600),
                 my_widgets.Spotify(),
                 widget.Pomodoro(
@@ -126,5 +135,5 @@ def startup_once():
     import os
     import subprocess
 
-    script = os.path.expanduser('~/.config/qtile/init.fish')
-    subprocess.call([script])
+    #script = os.path.expanduser('~/.config/qtile/init.fish')
+    #subprocess.call([script])
