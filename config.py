@@ -23,7 +23,7 @@ keys = [
     Key([mod, shift], 'space', lazy.window.toggle_floating()),
 
     # Launch Rofi
-    Key([mod], 'space', lazy.spawn('rofi -modi combi -show combi -combi-modi window,drun')),
+    Key([mod], 'space', lazy.spawn('rofi -modi combi -show combi -combi-modi window,drun -show-icons')),
 
     Key([mod], 'Down', lazy.layout.down()),
     Key([mod], 'Up', lazy.layout.up()),
