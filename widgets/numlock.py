@@ -35,4 +35,4 @@ class NumLock(InLoopPollText):
         except AttributeError:
             sub_string = ''
 
-        return '#' if 'on' in sub_string else ''
+        return 'NUM ' if 'on' in sub_string else ''
