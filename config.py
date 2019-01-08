@@ -165,8 +165,8 @@ screens = [
                 ),
                 widget.Notify(),
                 widget.Systray(),
-                widget.Net(),
-                widget.Clock(
+                # widget.Net(),
+                my_widgets.Clock(
                     background=Colors.purple_dark,
                     foreground=Colors.foregroud
                 ),
